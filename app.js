@@ -4,7 +4,6 @@ import {
   encodeCardHash,
   fairhelmMaydayCanonicalUrl,
   fairhelmVhfUrl,
-  formatMmsi,
   inspectCallSign,
   inspectEpirbHex,
   inspectMmsi,
