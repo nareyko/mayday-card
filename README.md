@@ -8,6 +8,11 @@ Open-source, zero-dependency, 100% client-side generator for an **ITU Radio Regu
 
 ---
 
+## FairHelm Open-Source Seamanship Suite
+
+Sister tool: [**sea-lights**](https://github.com/nareyko/sea-lights) — interactive OpenSeaMap / Shom light sectors chart (MIT), also at [fairhelm.com/en/yachts/tools/sea-lights/](https://fairhelm.com/en/yachts/tools/sea-lights/) and Google Play `com.fairhelm.sealights`.
+
+
 ## Why Every Yacht & Charter Crew Needs This Card at the Chart Table
 
 During a real offshore or coastal emergency (water ingress, fire, man overboard, dismasting), the person closest to the VHF radio is often **not** the skipper — it may be a crew member, partner, or guest under severe stress.
