@@ -1,0 +1,15 @@
+{
+  "name": "mayday-card",
+  "version": "1.0.0",
+  "description": "ITU WRC-07 & GMDSS compliant A4 VHF MAYDAY, PAN-PAN & DSC distress cockpit card generator for yachts (with NATO phonetic auto-spell, MMSI MID country validation, and offline QR code).",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nareyko/mayday-card.git"
+  },
+  "homepage": "https://fairhelm.com/en/free-vhf/mayday-card/",
+  "scripts": {
+    "test": "node --test mayday-model.test.mjs"
+  }
+}

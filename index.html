@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MAYDAY / PAN-PAN / DSC Distress Cockpit Card Generator — FairHelm</title>
+  <meta name="description" content="Free ITU WRC-07 &amp; GMDSS compliant A4 VHF MAYDAY, PAN-PAN &amp; DSC distress procedure card generator for yachts. Auto-spells Call Sign in NATO phonetics, formats 9-digit MMSI, and prints ready for lamination.">
+  <link rel="canonical" id="canonical-link" href="https://fairhelm.com/en/free-vhf/mayday-card/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Outfit:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=1">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "FairHelm MAYDAY / PAN-PAN / DSC Distress Cockpit Card Generator",
+    "applicationCategory": "NavigationApplication",
+    "operatingSystem": "All",
+    "url": "https://fairhelm.com/en/free-vhf/mayday-card/",
+    "isBasedOn": "https://fairhelm.com/en/free-vhf/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FairHelm",
+      "url": "https://fairhelm.com"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="screen-only app-header">
+    <div class="header-main">
+      <div>
+        <p class="kicker" id="ui-kicker">ITU WRC-07 · GMDSS · VHF CH 16</p>
+        <h1 id="ui-title">MAYDAY / PAN-PAN / DSC Distress Cockpit Card</h1>
+        <p class="lede" id="ui-lede">Fill in your vessel's MMSI, call sign, and hull details. Print on A4, laminate, and mount beside the VHF radio at the chart table.</p>
+      </div>
+      <div class="header-actions">
+        <label class="lang-picker" for="lang-select">
+          <span class="sr-only">Language</span>
+          <select id="lang-select" aria-label="Language">
+            <option value="en">EN · English</option>
+            <option value="de">DE · Deutsch</option>
+            <option value="sv">SV · Svenska</option>
+            <option value="ru">RU · Русский</option>
+            <option value="pl">PL · Polski</option>
+            <option value="es">ES · Español</option>
+            <option value="uk">UK · Українська</option>
+            <option value="ar">AR · العربية</option>
+            <option value="zh">ZH · 中文</option>
+            <option value="he">HE · עברית</option>
+          </select>
+        </label>
+        <button type="button" id="btn-night" class="btn-secondary" aria-pressed="false">Night Red Light</button>
+        <button type="button" id="btn-print" class="btn-primary">Print / Save A4 PDF for Lamination</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Left Screen-Only Editor Panel -->
+    <aside class="screen-only editor-panel" aria-labelledby="ui-form-heading">
+      <div class="editor-card">
+        <div class="editor-card-header">
+          <h2 id="ui-form-heading">Vessel &amp; Radio Station Details</h2>
+          <p class="privacy-badge" id="ui-privacy">100% client-side: vessel data never leaves your browser.</p>
+        </div>
+
+        <div class="presets-bar">
+          <span class="presets-label" id="ui-presets-label">Quick Presets:</span>
+          <button type="button" class="chip" id="btn-sample">Sample Yacht</button>
+          <button type="button" class="chip" id="btn-catamaran">Charter Cat 45</button>
+          <button type="button" class="chip" id="btn-blank">Blank Template (Write by Hand)</button>
+        </div>
+
+        <form id="card-form" autocomplete="off" novalidate>
+          <div class="field-grid">
+            <label class="field">
+              <span id="lbl-vessel">Vessel Name</span>
+              <input type="text" id="in-vessel" maxlength="36" placeholder="SY AURORA">
+              <small class="field-hint" id="hint-vessel-phonetic"></small>
+            </label>
+
+            <div class="field-row-2">
+              <label class="field">
+                <span id="lbl-callsign">Call Sign (ITU)</span>
+                <input type="text" id="in-callsign" maxlength="12" placeholder="SD2491">
+                <small class="field-hint" id="hint-callsign-phonetic"></small>
+              </label>
+
+              <label class="field">
+                <span id="lbl-mmsi">MMSI (9 digits)</span>
+                <input type="text" id="in-mmsi" inputmode="numeric" maxlength="11" placeholder="265418920">
+                <small class="field-hint" id="hint-mmsi-status"></small>
+              </label>
+            </div>
+
+            <div class="field-row-2">
+              <label class="field">
+                <span id="lbl-rig">Type, Rig &amp; LOA</span>
+                <input type="text" id="in-rig" maxlength="44" placeholder="Sloop · 12.2 m (40 ft)">
+              </label>
+
+              <label class="field">
+                <span id="lbl-pob">Max Persons on Board (POB)</span>
+                <input type="text" id="in-pob" maxlength="12" placeholder="6">
+              </label>
+            </div>
+
+            <label class="field">
+              <span id="lbl-hull">Hull, Deck &amp; Canvas Colour</span>
+              <input type="text" id="in-hull" maxlength="64" placeholder="White hull, navy sprayhood &amp; bimini">
+            </label>
+
+            <div class="field-row-2">
+              <label class="field">
+                <span id="lbl-epirb">406 MHz EPIRB / PLB Hex ID</span>
+                <input type="text" id="in-epirb" maxlength="22" placeholder="9D0E42A18C001F1">
+              </label>
+
+              <label class="field">
+                <span id="lbl-port">Home Port / Flag</span>
+                <input type="text" id="in-port" maxlength="28" placeholder="Stockholm">
+              </label>
+            </div>
+
+            <label class="checkbox-field" id="row-dual-lang">
+              <input type="checkbox" id="in-dual-lang" checked>
+              <span id="lbl-dual-lang">Keep spoken radio script in ITU English (recommended for international waters)</span>
+            </label>
+          </div>
+
+          <div class="editor-footer-actions">
+            <button type="button" id="btn-print-bottom" class="btn-primary full-width">Print / Save A4 PDF for Lamination</button>
+            <div class="secondary-row">
+              <button type="button" id="btn-copy-link" class="btn-secondary">Copy Boat Link</button>
+              <a id="credit-fairhelm" class="fairhelm-pill" href="https://fairhelm.com/en/free-vhf/" target="_blank" rel="noopener">© FairHelm · Free VHF Simulator ↗</a>
+            </div>
+            <p id="copy-status" class="copy-status" role="status" aria-live="polite" hidden></p>
+          </div>
+        </form>
+      </div>
+    </aside>
+
+    <!-- Right / Print A4 Lamination Sheet -->
+    <section class="sheet-stage" aria-label="A4 Print Preview">
+      <article class="a4-sheet" id="a4-sheet">
+        <!-- Lamination Punch Hole Marks -->
+        <div class="punch-marks" aria-hidden="true">
+          <span class="punch-hole"></span>
+          <span class="trim-caption" id="sheet-header-right">MOUNT AT CHART TABLE · LAMINATE A4</span>
+          <span class="punch-hole"></span>
+        </div>
+
+        <!-- Top Maritime Protocol Bar -->
+        <header class="sheet-top-bar">
+          <div class="sheet-top-title" id="sheet-header-left">
+            EMERGENCY VHF / DSC PROCEDURE · CHANNEL 16 (156.800 MHz · 25W)
+          </div>
+          <div class="sheet-top-port" id="out-port-badge">STOCKHOLM · SE</div>
+        </header>
+
+        <!-- Vessel Identity Banner (High-Contrast Cockpit Reference) -->
+        <section class="vessel-id-grid" aria-label="Vessel Identification">
+          <div class="id-cell id-cell-vessel">
+            <div class="id-label" id="lbl-banner-vessel">VESSEL NAME</div>
+            <div class="id-value-xl" id="out-vessel-name">SY AURORA</div>
+            <div class="id-phonetic" id="out-vessel-phonetic">Sierra Yankee · Alfa Uniform Romeo Oscar Romeo Alfa</div>
+          </div>
+
+          <div class="id-cell id-cell-callsign">
+            <div class="id-label" id="lbl-banner-callsign">CALL SIGN &amp; PHONETIC</div>
+            <div class="id-value-xl mono" id="out-callsign">SD2491</div>
+            <div class="id-phonetic-bold" id="out-callsign-phonetic">Sierra – Delta – Two – Four – Nine – One</div>
+          </div>
+
+          <div class="id-cell id-cell-mmsi">
+            <div class="id-label" id="lbl-banner-mmsi">MMSI (DSC ID)</div>
+            <div class="id-value-xl mono mmsi-highlight" id="out-mmsi">265 418 920</div>
+            <div class="id-phonetic" id="out-mmsi-spoken">Two Six Five · Four One Eight · Nine Two Zero</div>
+          </div>
+
+          <div class="id-cell id-cell-specs">
+            <div class="id-label" id="lbl-banner-specs">VESSEL DESCRIPTION &amp; EPIRB</div>
+            <div class="id-spec-line"><strong id="out-rig">Sloop · 12.2 m (40 ft)</strong> · POB: <strong id="out-pob">6</strong></div>
+            <div class="id-spec-line" id="out-hull">White hull, navy sprayhood &amp; bimini</div>
+            <div class="id-spec-epirb">EPIRB 406: <span class="mono" id="out-epirb">9D0E42A18C001F1</span></div>
+          </div>
+        </section>
+
+        <!-- PART 1: MAYDAY (RED BORDER — GRAVE & IMMINENT DANGER) -->
+        <section class="distress-box mayday-box">
+          <div class="box-banner mayday-banner">
+            <span class="box-badge" id="out-mayday-badge">MAYDAY — DISTRESS</span>
+            <span class="box-when" id="out-mayday-when">ONLY when a vessel or person is in GRAVE AND IMMINENT DANGER (sinking, fire, explosion, man overboard, abandoning ship) and requires immediate assistance.</span>
+          </div>
+
+          <div class="action-steps-row">
+            <div class="action-step">
+              <div class="step-title" id="out-step1-title">1. SEND DIGITAL ALERT (DSC)</div>
+              <div class="step-body" id="out-step1-body">Lift red <strong>[DIST / DISTRESS]</strong> cover. Press &amp; <strong>HOLD 5 seconds</strong> until continuous tone sounds. Wait 15s for Coast Guard DSC ack.</div>
+            </div>
+            <div class="action-step">
+              <div class="step-title" id="out-step2-title">2. SELECT CHANNEL 16 (25 WATTS)</div>
+              <div class="step-body" id="out-step2-body">Confirm VHF is on <strong>Channel 16 (156.8 MHz · 25W)</strong>. Press &amp; <strong>HOLD microphone [PTT]</strong> button to speak slowly and clearly:</div>
+            </div>
+          </div>
+
+          <div class="spoken-script-title" id="out-step3-title">3. READ ALOUD INTO MICROPHONE:</div>
+
+          <div class="script-table">
+            <div class="script-row">
+              <div class="script-cue" id="cue-call">1. Distress Signal (×3)</div>
+              <div class="script-spoken"><span class="say-red">“MAYDAY · MAYDAY · MAYDAY”</span></div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-this-is">2. Station Identity (×3 + Call Sign + MMSI)</div>
+              <div class="script-spoken">
+                <span class="say-lead" id="say-this-is-1">“THIS IS</span>
+                <strong class="say-vessel" id="out-mayday-vessel-3x">SY AURORA · SY AURORA · SY AURORA</strong><br>
+                <span class="say-sub">CALL SIGN: <strong class="mono" id="out-mayday-cs">SD2491</strong> (<span id="out-mayday-cs-phonetic">Sierra – Delta – Two – Four – Nine – One</span>) · MMSI: <strong class="mono" id="out-mayday-mmsi">265 418 920</strong>”</span>
+              </div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-repeat">3. Repeat MAYDAY + Identity</div>
+              <div class="script-spoken">
+                <span class="say-red">“MAYDAY</span>
+                <strong class="say-vessel" id="out-mayday-vessel-1x">SY AURORA</strong> ·
+                <span class="say-sub">CALL SIGN <strong class="mono" id="out-mayday-cs-2">SD2491</strong> · MMSI <strong class="mono" id="out-mayday-mmsi-2">265 418 920</strong>”</span>
+              </div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-position">4. Position (Read from GPS / Chartplotter)</div>
+              <div class="script-spoken">
+                <span class="say-lead" id="say-pos-lead">“MY POSITION IS:</span>
+                <span class="write-in-coords mono" id="out-pos-fill">LAT: ___° ___.___′ N / S     LON: ___° ___.___′ E / W   (or true bearing &amp; distance from landmark)</span>”
+              </div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-nature">5. Nature of Distress</div>
+              <div class="script-spoken">
+                <span class="say-lead" id="out-nature-examples">State clearly: Sinking / Taking on water · Fire on board · Man Overboard · Grounding · Dismasted &amp; drifting · Abandoning to liferaft</span>
+              </div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-assist">6. Assistance Required</div>
+              <div class="script-spoken"><span class="say-red" id="say-assist-phrase">“I REQUIRE IMMEDIATE ASSISTANCE”</span></div>
+            </div>
+
+            <div class="script-row">
+              <div class="script-cue" id="cue-pob">7. Persons on Board &amp; Vessel Details</div>
+              <div class="script-spoken">
+                “<strong id="out-mayday-pob">6</strong> <span id="say-pob-words">PERSONS ON BOARD</span> ·
+                <strong id="out-mayday-desc">Sloop · 12.2 m (40 ft) · White hull, navy sprayhood &amp; bimini</strong> ·
+                EPIRB: <span class="mono" id="out-mayday-epirb">9D0E42A18C001F1</span>”
+              </div>
+            </div>
+
+            <div class="script-row script-row-last">
+              <div class="script-cue" id="cue-over">8. End Transmission</div>
+              <div class="script-spoken">
+                <span class="say-red">“OVER”</span>
+                <span class="over-hint" id="out-over-hint">— Release [PTT] button immediately and LISTEN on Channel 16.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PART 2: PAN-PAN (AMBER BORDER — URGENCY) -->
+        <section class="distress-box panpan-box">
+          <div class="box-banner panpan-banner">
+            <span class="box-badge" id="out-panpan-badge">PAN-PAN — URGENCY</span>
+            <span class="box-when" id="out-panpan-when">Urgent situation concerning safety of vessel or person, NO immediate threat to life (engine/steering failure in clear water, dismasting without sinking, urgent medical advice).</span>
+          </div>
+          <div class="panpan-body">
+            <div class="panpan-step" id="out-panpan-step">Select Channel 16 (25W) · Hold [PTT] · Read aloud:</div>
+            <div class="panpan-script">
+              <strong class="say-amber">“PAN-PAN · PAN-PAN · PAN-PAN</strong> —
+              <strong>ALL STATIONS · ALL STATIONS · ALL STATIONS</strong> —
+              THIS IS <strong id="out-panpan-vessel-3x">SY AURORA · SY AURORA · SY AURORA</strong>,
+              CALL SIGN <strong class="mono" id="out-panpan-cs">SD2491</strong>,
+              MMSI <strong class="mono" id="out-panpan-mmsi">265 418 920</strong> —
+              MY POSITION IS <span class="mono">[LAT / LON]</span> —
+              <span class="panpan-placeholder">[STATE PROBLEM &amp; ASSISTANCE NEEDED]</span> —
+              <span id="out-panpan-desc">Sloop · 12.2 m (40 ft), POB 6</span> —
+              <strong class="say-amber">OVER”</strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- PART 3: FALSE DSC CANCELLATION & NATO PHONETIC TABLE -->
+        <section class="bottom-reference-grid">
+          <div class="cancel-box">
+            <div class="ref-title" id="out-cancel-title">FALSE DSC DISTRESS ALERT — IMMEDIATE CANCELLATION</div>
+            <p class="cancel-text" id="out-cancel-body">
+              1. Switch off transmitter immediately or press [CANCEL / CLR]. 2. Switch on, tune to Channel 16, press [PTT] and announce: “ALL STATIONS × 3 — THIS IS [VESSEL NAME], CALL SIGN, MMSI — PLEASE CANCEL MY DISTRESS ALERT OF [TIME UTC] — MASTER — OVER.”
+            </p>
+            <div class="keywords-strip">
+              <strong id="out-keywords-title">KEY DISTRESS TRAFFIC WORDS:</strong>
+              <span><strong>SEELONCE MAYDAY</strong> (Radio silence ordered)</span> ·
+              <span><strong>MAYDAY RELAY</strong> (Relaying distress for another vessel)</span> ·
+              <span><strong>PRUDSCENCE</strong> (Restricted working resumed)</span> ·
+              <span><strong>SEELONCE FEENEE</strong> (Distress ended)</span>
+            </div>
+          </div>
+
+          <div class="nato-box">
+            <div class="ref-title" id="out-nato-title">ITU / NATO PHONETIC ALPHABET &amp; MARINE DIGITS</div>
+            <div class="nato-grid" id="nato-grid" aria-label="NATO Phonetic Alphabet">
+              <span><b>A</b> Alfa</span><span><b>B</b> Bravo</span><span><b>C</b> Charlie</span><span><b>D</b> Delta</span><span><b>E</b> Echo</span><span><b>F</b> Foxtrot</span><span><b>G</b> Golf</span>
+              <span><b>H</b> Hotel</span><span><b>I</b> India</span><span><b>J</b> Juliett</span><span><b>K</b> Kilo</span><span><b>L</b> Lima</span><span><b>M</b> Mike</span><span><b>N</b> November</span>
+              <span><b>O</b> Oscar</span><span><b>P</b> Papa</span><span><b>Q</b> Quebec</span><span><b>R</b> Romeo</span><span><b>S</b> Sierra</span><span><b>T</b> Tango</span><span><b>U</b> Uniform</span>
+              <span><b>V</b> Victor</span><span><b>W</b> Whiskey</span><span><b>X</b> X-ray</span><span><b>Y</b> Yankee</span><span><b>Z</b> Zulu</span><span><b>0</b> Zeero</span><span><b>1</b> Wun</span>
+              <span><b>2</b> Too</span><span><b>3</b> Tree</span><span><b>4</b> Fower</span><span><b>5</b> Fife</span><span><b>6</b> Six</span><span><b>7</b> Seven</span><span><b>8</b> Ait</span><span><b>9</b> Niner</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SHEET FOOTER WITH VECTOR QR CODE TO FAIRHELM FREE VHF SIMULATOR -->
+        <footer class="sheet-footer">
+          <div class="qr-block">
+            <div class="qr-svg-wrap" id="qr-container" aria-hidden="true"></div>
+            <div class="qr-copy">
+              <div class="qr-title" id="out-qr-title">Practice MAYDAY &amp; DSC Voice Calls Before Departure</div>
+              <div class="qr-body" id="out-qr-body">Scan QR or visit <strong>fairhelm.com/en/free-vhf/</strong> — free interactive VHF &amp; DSC simulator with voice recognition.</div>
+            </div>
+          </div>
+          <div class="sheet-meta-right">
+            <a id="sheet-fairhelm-link" href="https://fairhelm.com/en/free-vhf/" target="_blank" rel="noopener">fairhelm.com/en/free-vhf/</a>
+            <span class="sheet-standard">ITU RR Appendix 18 · SOLAS Ch. IV · A4</span>
+          </div>
+        </footer>
+      </article>
+    </section>
+  </main>
+
+  <script type="module" src="app.js?v=1"></script>
+</body>
+</html>
