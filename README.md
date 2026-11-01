@@ -13,6 +13,14 @@ Open-source, zero-dependency, 100% client-side generator for an **ITU Radio Regu
 Sister tool: [**sea-lights**](https://github.com/nareyko/sea-lights) — interactive OpenSeaMap / Shom light sectors chart (MIT), also at [fairhelm.com/en/yachts/tools/sea-lights/](https://fairhelm.com/en/yachts/tools/sea-lights/) and Google Play `com.fairhelm.sealights`.
 
 
+## Open-data reuse
+
+Educational reuse of the French SECMAR / CROSS open dataset
+([Opérations coordonnées par les CROSS](https://www.data.gouv.fr/datasets/operations-coordonnees-par-les-cross))
+and the SNSM public alert procedure. Canon URL:
+[fairhelm.com/en/free-vhf/mayday-card/](https://fairhelm.com/en/free-vhf/mayday-card/).
+data.gouv.fr Réutilisation card: pending owner publish (MGP-W2-10).
+
 ## Why Every Yacht & Charter Crew Needs This Card at the Chart Table
 
 During a real offshore or coastal emergency (water ingress, fire, man overboard, dismasting), the person closest to the VHF radio is often **not** the skipper — it may be a crew member, partner, or guest under severe stress.
