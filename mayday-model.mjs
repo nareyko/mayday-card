@@ -1,7 +1,7 @@
 /**
  * Pure domain model for the MAYDAY / PAN-PAN / DSC Distress Cockpit Card Generator.
- * Follows ITU Radio Regulations (WRC-07 / Appendix 18 & Chapter VII), IMO GMDSS / SOLAS Ch. IV,
- * and RYA SRC / ISSA VHF operational procedures.
+ * False DSC alert cancellation on the card: ITU Resolution 349 (Rev.WRC-23) and Radio Regulations
+ * (2024) No. 32.53E.
  */
 
 export const NATO_LETTERS = {

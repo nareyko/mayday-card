@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   DEFAULT_CARD_STATE,
@@ -131,5 +132,33 @@ test("ui-copy provides complete translations for all 10 FairHelm locales", () =>
       fairhelmMaydayCanonicalUrl(lang),
       `https://fairhelm.com/${lang}/free-vhf/mayday-card/`,
     );
+  }
+});
+
+test("false DSC alert box follows Res. 349 / RR 32.53E and the course script", () => {
+  const html = readFileSync(new URL("./index.html", import.meta.url), "utf8");
+  const script = html.match(/<p class="cancel-script"[^>]*>([\s\S]*?)<\/p>/)[1]
+    .replace(/<[^>]+>/g, "")
+    .replace(/\s+/g, " ");
+  const order = [
+    "ALL STATIONS, ALL STATIONS, ALL STATIONS",
+    "THIS IS",
+    "CALL SIGN",
+    "MMSI",
+    "PLEASE CANCEL MY DISTRESS ALERT OF",
+    "UTC",
+    "OUT",
+  ].map((part) => script.indexOf(part));
+  assert.ok(order.every((at, i) => at >= 0 && (i === 0 || at > order[i - 1])), script);
+  assert.doesNotMatch(script, /MASTER|OVER/);
+  assert.match(html, /Card version \d{4}-\d{2}-\d{2}/);
+
+  for (const lang of LOCALES) {
+    const { cancelBody, cancelAfter, kicker } = copyFor(lang);
+    assert.deepEqual(cancelBody.split("\n").map((line) => line.slice(0, 2)), ["1.", "2.", "3."], lang);
+    assert.ok(cancelBody.includes("10") && cancelBody.includes("16"), lang);
+    assert.ok(cancelAfter.startsWith("4.") && cancelAfter.includes("16"), lang);
+    assert.doesNotMatch(`${cancelBody} ${cancelAfter}`, /MASTER|OVER/, lang);
+    assert.doesNotMatch(kicker, /WRC/, lang);
   }
 });

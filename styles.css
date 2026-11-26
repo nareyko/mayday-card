@@ -647,7 +647,7 @@ body.night-mode .write-in-coords {
 /* Bottom Reference Grid */
 .bottom-reference-grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
+  grid-template-columns: 1.5fr 1fr;
   gap: 2.5mm;
 }
 
@@ -682,9 +682,21 @@ body.night-mode .ref-title {
   margin: 0 0 1.2mm;
   font-size: 7.1pt;
   line-height: 1.25;
+  white-space: pre-line;
+}
+
+.cancel-script {
+  margin: 0 0 1.2mm;
+  padding-left: 2mm;
+  border-left: 2px solid var(--mayday-red);
+  font-size: 7.4pt;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: left;
 }
 
 .keywords-strip {
+  margin-top: 1mm;
   padding-top: 1mm;
   border-top: 1px solid var(--sheet-line);
   font-size: 6.9pt;
@@ -693,8 +705,8 @@ body.night-mode .ref-title {
 
 .nato-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 0.6mm 1.5mm;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.3mm 1mm;
   font-size: 7pt;
   line-height: 1.22;
 }
@@ -1009,5 +1021,24 @@ input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]) {
   }
   .bottom-reference-grid {
     grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 2026-11-26: room on the printed sheet for the full cancellation procedure --- */
+@media print {
+  .a4-sheet {
+    gap: 1.6mm !important;
+  }
+  .punch-marks {
+    padding-bottom: 0;
+  }
+  .qr-svg-wrap {
+    width: 15mm;
+    height: 15mm;
+  }
+  .script-cue,
+  .script-spoken {
+    padding-top: 1.3mm;
+    padding-bottom: 1.3mm;
   }
 }

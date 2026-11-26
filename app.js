@@ -192,6 +192,7 @@ function renderLocaleCopy() {
 
   setText("out-cancel-title", copy.cancelTitle);
   setText("out-cancel-body", copy.cancelBody);
+  setText("out-cancel-after", copy.cancelAfter);
   setText("out-nato-title", copy.natoStripTitle);
   setText("out-keywords-title", copy.keyWordsTitle);
 
@@ -294,6 +295,11 @@ function renderSheetValues() {
   setText("out-panpan-cs", csDisplay);
   setText("out-panpan-mmsi", mmsiDisplay);
   setText("out-panpan-desc", `${rigDisplay}, ${hullDisplay}, POB ${pobDisplay}`);
+
+  // False DSC alert cancellation script
+  setText("out-cancel-vessel-3x", vessel3x);
+  setText("out-cancel-cs", csDisplay);
+  setText("out-cancel-mmsi", mmsiDisplay);
 }
 
 

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Outfit:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,7 +36,7 @@
   <header class="screen-only app-header">
     <div class="header-main">
       <div>
-        <p class="kicker" id="ui-kicker">ITU WRC-07 · GMDSS · VHF CH 16</p>
+        <p class="kicker" id="ui-kicker">GMDSS · VHF CH 16</p>
         <h1 id="ui-title">MAYDAY / PAN-PAN / DSC Distress Cockpit Card</h1>
         <p class="lede" id="ui-lede">Fill in your vessel's MMSI, call sign, and hull details. Print on A4, laminate, and mount beside the VHF radio at the chart table.</p>
       </div>
@@ -308,15 +308,16 @@
         <section class="bottom-reference-grid">
           <div class="cancel-box">
             <div class="ref-title" id="out-cancel-title">FALSE DSC DISTRESS ALERT — IMMEDIATE CANCELLATION</div>
-            <p class="cancel-text" id="out-cancel-body">
-              1. Switch off transmitter immediately or press [CANCEL / CLR]. 2. Switch on, tune to Channel 16, press [PTT] and announce: “ALL STATIONS × 3 — THIS IS [VESSEL NAME], CALL SIGN, MMSI — PLEASE CANCEL MY DISTRESS ALERT OF [TIME UTC] — MASTER — OVER.”
+            <p class="cancel-text" id="out-cancel-body">1. Follow the instructions on the radio screen. If there are none, switch the radio off, switch it on again after 10 seconds and follow the screen.
+2. If your radio can cancel a DSC alert, start the cancel function.
+3. Set Channel 16, press [PTT] and read:</p>
+            <p class="cancel-script" lang="en" dir="ltr">
+              “ALL STATIONS, ALL STATIONS, ALL STATIONS,
+              THIS IS <span id="out-cancel-vessel-3x">SY AURORA · SY AURORA · SY AURORA</span>,
+              CALL SIGN <span class="mono" id="out-cancel-cs">SD2491</span>, MMSI <span class="mono" id="out-cancel-mmsi">265 418 920</span>,<br>
+              PLEASE CANCEL MY DISTRESS ALERT OF ______ UTC, OUT”
             </p>
-            <div class="keywords-strip">
-              <strong id="out-keywords-title">KEY DISTRESS TRAFFIC WORDS:</strong>
-              <span><strong>SEELONCE MAYDAY</strong> (Radio silence ordered)</span> ·
-              <span><strong>MAYDAY RELAY</strong> (Relaying distress for another vessel)</span> ·
-              <span><strong>SEELONCE FEENEE</strong> (Distress ended)</span>
-            </div>
+            <p class="cancel-text" id="out-cancel-after">4. Keep listening on Channel 16 and answer any call about this alert.</p>
           </div>
 
           <div class="nato-box">
@@ -327,6 +328,12 @@
               <span><b>O</b> Oscar</span><span><b>P</b> Papa</span><span><b>Q</b> Quebec</span><span><b>R</b> Romeo</span><span><b>S</b> Sierra</span><span><b>T</b> Tango</span><span><b>U</b> Uniform</span>
               <span><b>V</b> Victor</span><span><b>W</b> Whiskey</span><span><b>X</b> X-ray</span><span><b>Y</b> Yankee</span><span><b>Z</b> Zulu</span><span><b>0</b> Zeero</span><span><b>1</b> Wun</span>
               <span><b>2</b> Too</span><span><b>3</b> Tree</span><span><b>4</b> Fower</span><span><b>5</b> Fife</span><span><b>6</b> Six</span><span><b>7</b> Seven</span><span><b>8</b> Ait</span><span><b>9</b> Niner</span>
+            </div>
+            <div class="keywords-strip">
+              <strong id="out-keywords-title">KEY DISTRESS TRAFFIC WORDS:</strong>
+              <span><strong>SEELONCE MAYDAY</strong> (Radio silence ordered)</span> ·
+              <span><strong>MAYDAY RELAY</strong> (Relaying distress for another vessel)</span> ·
+              <span><strong>SEELONCE FEENEE</strong> (Distress ended)</span>
             </div>
           </div>
         </section>
@@ -342,13 +349,13 @@
           </div>
           <div class="sheet-meta-right">
             <a id="sheet-fairhelm-link" href="https://fairhelm.com/en/free-vhf/" target="_blank" rel="noopener">fairhelm.com/en/free-vhf/</a>
-            <span class="sheet-standard">ITU RR Appendix 18 · SOLAS Ch. IV · A4</span>
+            <span class="sheet-standard">False alert: ITU Res. 349 (Rev.WRC-23), RR 32.53E<br>Card version 2026-11-26 · A4</span>
           </div>
         </footer>
       </article>
     </section>
   </main>
 
-  <script type="module" src="app.js?v=2"></script>
+  <script type="module" src="app.js?v=3"></script>
 </body>
 </html>
