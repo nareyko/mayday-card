@@ -3,7 +3,7 @@
 Open-source, zero-dependency, 100% client-side generator for an **ITU Radio Regulations (WRC-07) & IMO GMDSS (SOLAS Chapter IV)** compliant **VHF Channel 16 MAYDAY, PAN-PAN & DSC Distress Cockpit Card**.
 
 - **Interactive Web App & Practice Simulator:** [**fairhelm.com/en/free-vhf/mayday-card/**](https://fairhelm.com/en/free-vhf/mayday-card/)
-- **Free Interactive VHF & DSC Voice Simulator:** [**fairhelm.com/en/free-vhf/**](https://fairhelm.com/en/free-vhf/)
+- **Free VHF Listening Practice:** [**fairhelm.com/en/free-vhf/**](https://fairhelm.com/en/free-vhf/)
 - **GitHub Pages Mirror:** [**nareyko.github.io/mayday-card/**](https://nareyko.github.io/mayday-card/)
 
 ---
@@ -33,7 +33,7 @@ This generator creates a **single-sheet A4 cockpit reference card** designed to 
    - **Red Border — `MAYDAY` (Grave & Imminent Danger):** Step-by-step DSC `[DIST / DISTRESS]` 5-second activation + Channel 16 (25W) spoken script + whiteboard/grease-pencil coordinate box (`LAT / LON`).
    - **Amber Border — `PAN-PAN` (Urgency):** Engine/steering failure in clear water, medical advice (`MEDICO`).
    - **False DSC Distress Alert Cancellation:** Exact ITU Channel 16 voice cancellation procedure.
-   - **Full A–Z NATO Phonetic Alphabet, 0–9 Marine Digits & Distress Traffic Keywords** (`SEELONCE MAYDAY`, `MAYDAY RELAY`, `PRUDSCENCE`, `SEELONCE FEENEE`).
+   - **Full A–Z NATO Phonetic Alphabet, 0–9 Marine Digits & Distress Traffic Keywords** (`SEELONCE MAYDAY`, `MAYDAY RELAY`, `SEELONCE FEENEE`).
 4. **10 Languages Supported:** `EN`, `DE`, `SV`, `RU`, `PL`, `ES`, `UK`, `AR`, `ZH`, `HE` (keeps international ITU English spoken phrases while localizing crew instructions).
 5. **100% Privacy & Zero Dependencies:** Pure ES Modules (`mayday-model.mjs`, `qr-svg.mjs`, `ui-copy.mjs`). No vessel data ever leaves your browser. Includes an offline ISO/IEC 18004 vector SVG QR code generator linking to the [FairHelm Free VHF Simulator](https://fairhelm.com/en/free-vhf/).
 

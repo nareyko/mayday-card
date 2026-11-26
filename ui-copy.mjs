@@ -72,8 +72,8 @@ const PACKS = {
     cancelBody: "1. Switch off transmitter immediately or press [CANCEL / CLR]. 2. Switch on, tune to Channel 16, press [PTT] and announce: \"ALL STATIONS × 3 — THIS IS [VESSEL NAME], CALL SIGN, MMSI — PLEASE CANCEL MY DISTRESS ALERT OF [TIME UTC] — MASTER — OVER.\"",
     natoStripTitle: "ITU / NATO PHONETIC ALPHABET & MARINE DIGITS",
     keyWordsTitle: "KEY DISTRESS TRAFFIC WORDS:",
-    qrCtaTitle: "Practice MAYDAY & DSC Voice Calls Before Departure",
-    qrCtaBody: "Scan QR or visit fairhelm.com/en/free-vhf/ — free interactive VHF & DSC simulator with voice recognition.",
+    qrCtaTitle: "Practise VHF Listening Before Departure",
+    qrCtaBody: "Scan QR or visit fairhelm.com/en/free-vhf/ — free VHF listening practice.",
     fairhelmCredit: "© FairHelm · Free VHF Simulator & Maritime Reference",
   },
   de: {
@@ -142,8 +142,8 @@ const PACKS = {
     cancelBody: "1. Gerät sofort ausschalten oder [CANCEL / CLR] drücken. 2. Einschalten, Kanal 16 wählen, [PTT] drücken und durchsagen: \"ALL STATIONS × 3 — THIS IS [NAME], CALL SIGN, MMSI — PLEASE CANCEL MY DISTRESS ALERT OF [ZEIT UTC] — MASTER — OVER.\"",
     natoStripTitle: "ITU / NATO-BUCHSTABIERTAFEL & ZIFFERN-AUSSPRACHE",
     keyWordsTitle: "WICHTIGE NOTVERKEHR-BEGRIFFE:",
-    qrCtaTitle: "MAYDAY & DSC-Sprechfunk vor dem Auslaufen trainieren",
-    qrCtaBody: "QR-Code scannen oder fairhelm.com/de/free-vhf/ öffnen — kostenloser UKW-Simulator mit Spracherkennung.",
+    qrCtaTitle: "UKW-Hörverstehen vor dem Auslaufen üben",
+    qrCtaBody: "QR-Code scannen oder fairhelm.com/de/free-vhf/ öffnen — kostenlose UKW-Hörübungen.",
     fairhelmCredit: "© FairHelm · Kostenloser UKW-Simulator & Seefunk-Praxis",
   },
   ru: {
