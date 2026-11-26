@@ -152,6 +152,8 @@ test("false DSC alert box follows Res. 349 / RR 32.53E and the course script", (
   assert.ok(order.every((at, i) => at >= 0 && (i === 0 || at > order[i - 1])), script);
   assert.doesNotMatch(script, /MASTER|OVER/);
   assert.match(html, /Card version \d{4}-\d{2}-\d{2}/);
+  const description = html.match(/<meta name="description" content="([^"]*)"/)[1];
+  assert.doesNotMatch(description, /WRC-07|compliant/i);
 
   for (const lang of LOCALES) {
     const { cancelBody, cancelAfter, kicker } = copyFor(lang);
